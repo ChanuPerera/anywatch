@@ -57,7 +57,7 @@ function Home() {
                 ref={watchContainerRef}
               >
                 <div
-                  className="watch-face absolute bg-slate-900 bg-opacity-40 rounded-full max-w-[540px] max-h-[540px] flex justify-center items-center"
+                  className="watch-face absolute bg-slate-900 bg-opacity-40 rounded-full max-w-[424px] max-h-[424px] flex justify-center items-center"
                   style={{
                     width: `${faceSize.width}px`,
                     height: `${faceSize.height}px`, 
