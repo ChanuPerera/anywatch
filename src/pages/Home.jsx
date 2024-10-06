@@ -1,10 +1,15 @@
 import React, { useEffect, useState, useRef } from "react";
 import BG from "../Assets/images/bg2.jpg";
 import WATCH from "../Assets/images/watchOPT.png";
+import { useDispatch , useSelector } from "react-redux";
+import { setColor } from "../Service/provider/colorSilce";
+import dayjs from 'dayjs';
+
 
 function Home() {
   const [faceSize, setFaceSize] = useState({ width: 0, height: 0 });
   const watchContainerRef = useRef(null);
+  const [time, setTime] = useState(dayjs());
 
   // Function to calculate watch-face size
   const updateFaceSize = () => {
@@ -20,6 +25,19 @@ function Home() {
     }
   };
 
+
+  useEffect(() => {
+    // Update the time every second
+    const interval = setInterval(() => {
+      setTime(dayjs()); // Update with current time using dayjs
+    }, 1000);
+
+    return () => clearInterval(interval); // Cleanup the interval on component unmount
+  }, []);
+
+   // Format the time using Day.js (e.g., HH:mm:ss)
+   const formattedTime = time.format('HH:mm:ss'); 
+
   useEffect(() => {
     // Update face size on component mount and window resize
     updateFaceSize();
@@ -31,6 +49,9 @@ function Home() {
   }, []);
 
   const colorCodes = ["#40E0D0", "#ffbd33", "#c850e4"];
+  const dispatch = useDispatch();
+  const selectedColor = useSelector((state) => state.color.selectedColor);
+
 
   return (
     <div
@@ -60,10 +81,12 @@ function Home() {
                   className="watch-face absolute bg-slate-900 bg-opacity-40 rounded-full max-w-[424px] max-h-[424px] flex justify-center items-center"
                   style={{
                     width: `${faceSize.width}px`,
-                    height: `${faceSize.height}px`, 
+                    height: `${faceSize.height}px`,
                   }}
                 >
-                  <h2 className="text-white font-bold text-[64px]">08:42</h2>
+                  <span className="text-white font-bold font-link md:text-[7rem] sm:text-[8rem] text-[6rem]" style={{ color: selectedColor }}>
+      {formattedTime}
+    </span>
                 </div>
                 <div className="fixed bottom-[56px] left-0 right-0 py-5 px-5 flex flex-row space-x-2 justify-around max-w-[620px] mx-auto">
                   {colorCodes.map((colorItem, index) => (
@@ -71,8 +94,9 @@ function Home() {
                       key={index}
                       className="color-selector w-[56px] h-[56px] rounded-full cursor-pointer"
                       style={{
-                        backgroundColor: colorItem, 
+                        backgroundColor: colorItem,
                       }}
+                      onClick={() => dispatch(setColor(colorItem))}
                     />
                   ))}
                 </div>

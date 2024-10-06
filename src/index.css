@@ -21,3 +21,12 @@ code {
   transform: translateY(-10px);
   transition: all .5s ease-in-out;
 }
+
+@font-face {
+  font-family: digitalFont;
+  src: url('../src/Assets/fonts/Technology-Bold.ttf');
+}
+
+.font-link{
+  font-family: digitalFont;
+}
