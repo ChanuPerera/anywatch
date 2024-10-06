@@ -30,22 +30,17 @@ function Home() {
     };
   }, []);
 
-
-  const colorCodes = [
-    "#40E0D0",
-    "#ffbd33",
-    "#c850e4"
-  ]
+  const colorCodes = ["#40E0D0", "#ffbd33", "#c850e4"];
 
   return (
     <div
       className="bg-[#03030a] "
-    //   style={{
-    //     backgroundImage: `url(${BG})`,
-    //     backgroundPosition: "center",
-    //     backgroundRepeat: "no-repeat",
-    //     backgroundSize: "cover",
-    //   }}
+      //   style={{
+      //     backgroundImage: `url(${BG})`,
+      //     backgroundPosition: "center",
+      //     backgroundRepeat: "no-repeat",
+      //     backgroundSize: "cover",
+      //   }}
     >
       <div className="w-full h-full backdrop-blur-sm bg-[#03030a] bg-opacity-50">
         <div className="container mx-auto flex justify-center items-center p-5 sm:p-0">
@@ -69,17 +64,18 @@ function Home() {
                     height: `${faceSize.height}px`, // Set height dynamically
                   }}
                 >
-                        <h2 className="text-white font-bold text-[64px]">08:42</h2>
-
+                  <h2 className="text-white font-bold text-[64px]">08:42</h2>
                 </div>
                 <div className="fixed bottom-[56px] left-0 right-0 py-5 px-5 flex flex-row space-x-2 justify-around max-w-[620px] mx-auto">
-                    {colorCodes.map((colorItem , index) => (
-   <div key={index} className={`color-selector w-[56px] h-[56px] rounded-full 
-    bg-[${colorItem}] cursor-pointer `}/>
-
-                    ))}
-               
-                 
+                  {colorCodes.map((colorItem, index) => (
+                    <div
+                      key={index}
+                      className="color-selector w-[56px] h-[56px] rounded-full cursor-pointer"
+                      style={{
+                        backgroundColor: colorItem, // Apply dynamic color
+                      }}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
