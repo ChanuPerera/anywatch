@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import BG from "../Assets/images/bg2.jpg";
-import WATCH from "../Assets/images/watch.png";
+import WATCH from "../Assets/images/watchOPT.png";
 
 function Home() {
   const [faceSize, setFaceSize] = useState({ width: 0, height: 0 });
@@ -56,12 +56,11 @@ function Home() {
                 }}
                 ref={watchContainerRef}
               >
-                {/* Dynamically set the size of watch-face */}
                 <div
                   className="watch-face absolute bg-slate-900 bg-opacity-40 rounded-full max-w-[540px] max-h-[540px] flex justify-center items-center"
                   style={{
-                    width: `${faceSize.width}px`, // Set width dynamically
-                    height: `${faceSize.height}px`, // Set height dynamically
+                    width: `${faceSize.width}px`,
+                    height: `${faceSize.height}px`, 
                   }}
                 >
                   <h2 className="text-white font-bold text-[64px]">08:42</h2>
@@ -72,7 +71,7 @@ function Home() {
                       key={index}
                       className="color-selector w-[56px] h-[56px] rounded-full cursor-pointer"
                       style={{
-                        backgroundColor: colorItem, // Apply dynamic color
+                        backgroundColor: colorItem, 
                       }}
                     />
                   ))}
